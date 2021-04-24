@@ -2,9 +2,12 @@
   "name": "ftp-log-downloader",
   "version": "1.0.0",
   "description": "simple ftp log downloader",
-  "main": "index.js",
+  "main": "src/index.js",
+  "bin": {
+    "logDL": "bin/log-dl"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -18,7 +21,10 @@
   "homepage": "https://github.com/Yusuf007R/ftp-log-downloader#readme",
   "dependencies": {
     "basic-ftp": "^4.6.6",
-    "inquirer": "^8.0.0"
+    "chalk": "^4.1.1",
+    "inquirer": "^8.0.0",
+    "inquirer-datepicker-prompt": "^0.4.2",
+    "nodemon": "^2.0.7"
   },
   "devDependencies": {
     "eslint": "^7.25.0"

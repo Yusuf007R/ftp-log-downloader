@@ -1,5 +1,6 @@
 const ftp = require("basic-ftp");
-var fs = require("fs");
+const fs = require("fs");
+const Log = require("./log");
 
 module.exports = async (data) => {
   const client = new ftp.Client();
@@ -14,17 +15,20 @@ module.exports = async (data) => {
     if (!fs.existsSync(data.saveDir)) {
       fs.mkdirSync(data.saveDir);
     }
-    console.log(`trying to ${data.fileDir}/${data.fileName} from ${data.host}`);
-
+    Log(
+      `trying to ${data.fileDir}/${data.fileName} from ${
+        data.host
+      } ${new Date().toString()}`
+    );
     await client.downloadTo(
       `${data.saveDir}/${data.fileName}`,
       `${data.fileDir}/${data.fileName}`
     );
-    console.log("done");
+    Log("done");
   } catch (err) {
     if (err.code == 550)
-      return console.log("Permission Denied or No Such File or Directory");
-    console.log(err);
+      return Log("Permission Denied or No Such File or Directory");
+    Log(err);
   }
   client.close();
 };
