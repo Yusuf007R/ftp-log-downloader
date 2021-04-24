@@ -1,0 +1,26 @@
+{
+  "name": "ftp-log-downloader",
+  "version": "1.0.0",
+  "description": "simple ftp log downloader",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yusuf007R/ftp-log-downloader.git"
+  },
+  "author": "Yusuf",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yusuf007R/ftp-log-downloader/issues"
+  },
+  "homepage": "https://github.com/Yusuf007R/ftp-log-downloader#readme",
+  "dependencies": {
+    "basic-ftp": "^4.6.6",
+    "inquirer": "^8.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.25.0"
+  }
+}
