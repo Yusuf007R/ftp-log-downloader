@@ -9,5 +9,6 @@ module.exports = (data, date) => {
       : date.getFullYear()
   );
   let fileName = `${host}-${fileDate}${fileGeneration.ext}`;
-  return fileName;
+  fileGeneration.fileName = fileName;
+  return fileGeneration;
 };

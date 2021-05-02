@@ -7,7 +7,7 @@
     "logDL": "bin/log-dl"
   },
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node ./src/index.js"
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,6 @@
   "homepage": "https://github.com/Yusuf007R/ftp-log-downloader#readme",
   "dependencies": {
     "basic-ftp": "^4.6.6",
-    "chalk": "^4.1.1",
     "inquirer": "^8.0.0",
     "inquirer-datepicker-prompt": "^0.4.2",
     "nodemon": "^2.0.7"
