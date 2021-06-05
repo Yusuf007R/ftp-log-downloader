@@ -1,6 +1,3 @@
-const fs = require("fs");
-
-module.exports = (data) => {
-  fs.appendFileSync(data + " log.txt" + "\n");
+module.exports = (data, error = false) => {
   console.log(data);
 };

@@ -27,11 +27,21 @@ inquirer
         })
         .then(({ date }) => {
           console.log("generating file names...");
-          let downloads = [];
+          let listOfFIles = [];
           for (let i = 0; i < config.monthly.length; i++) {
-            downloads.push(monthlyFileGenerator(config.monthly[i], date));
+            listOfFIles.push(
+              monthlyFileGenerator(
+                {
+                  saveDir: config.configs.monthlySavePath,
+                  ...config.monthly[i],
+                },
+                date
+              )
+            );
           }
-          console.log(downloads);
+          listOfFIles.forEach((element) => {
+            ConnectAndDownload(element);
+          });
         });
     } else if (typeOfLog == "Daily") {
       inquirer
@@ -52,7 +62,23 @@ inquirer
                 format: ["dd", "/", "mm", "/", "yy"],
               })
               .then(({ date }) => {
-                console.log(date);
+                let listOfFIles = [];
+                for (let i = 0; i < config.daily.length; i++) {
+                  listOfFIles.push(
+                    dailyFileGenerator(
+                      {
+                        saveDir: config.configs.DailySavePath,
+                        ...config.daily[i],
+                      },
+                      [date]
+                    )
+                  );
+                }
+                listOfFIles.forEach((element) => {
+                  element.forEach((element) => {
+                    ConnectAndDownload(element);
+                  });
+                });
               });
           } else if (TypeOfDaily == "Group of days") {
             inquirer
@@ -63,7 +89,6 @@ inquirer
                 format: ["dd", "/", "mm", "/", "yy"],
               })
               .then(({ firstDate }) => {
-                console.log(firstDate);
                 inquirer
                   .prompt({
                     type: "datetime",
@@ -76,10 +101,20 @@ inquirer
                     let listOfFIles = [];
                     for (let i = 0; i < config.daily.length; i++) {
                       listOfFIles.push(
-                        dailyFileGenerator(config.daily[i], arrayOfDates)
+                        dailyFileGenerator(
+                          {
+                            saveDir: config.configs.DailySavePath,
+                            ...config.daily[i],
+                          },
+                          arrayOfDates
+                        )
                       );
                     }
-                    console.log(listOfFIles);
+                    listOfFIles.forEach((element) => {
+                      element.forEach((element) => {
+                        ConnectAndDownload(element);
+                      });
+                    });
                   });
               });
           }
@@ -89,15 +124,3 @@ inquirer
   .catch((error) => {
     console.log(error);
   });
-
-// const data = {
-//   host: "test.rebex.net",
-//   user: "demo",
-//   pass: "password",
-//   fileDir: "/pub/example",
-
-//   fileName: "KeyGeneratorSmall.png",
-//   saveDir: "./downloads",
-// };
-
-// ConnectAndDownload(data);

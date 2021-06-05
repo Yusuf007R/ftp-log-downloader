@@ -1,7 +1,7 @@
 {
   "configs": {
-    "monthlySavePath": "./downloads/Monthly",
-    "DailySavePath": "./downloads/Daily"
+    "monthlySavePath": "./downloads/monthly",
+    "DailySavePath": "./downloads/daily"
   },
 
   "monthly": [
@@ -10,7 +10,8 @@
       "host": "ftp.test.xd",
       "user": "user",
       "pass": "pass",
-      "fileDir": "/logs",
+      "secure": false,
+      "fileDir": "/logs/",
       "fileGeneration": {
         "yearDigits": 2,
         "monthList": [
@@ -27,60 +28,8 @@
           "Nov",
           "Dec"
         ],
-        "format": "m/y",
+        "format": "ftp.test.xd_${m}-${y}",
         "ext": ".gz"
-      }
-    },
-    {
-      "name": "xd3",
-      "host": "ftp.test.xd2",
-      "user": "user",
-      "pass": "pass",
-      "fileDir": "/logs",
-      "fileGeneration": {
-        "yearDigits": 4,
-        "monthList": [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct",
-          "Nov",
-          "Dec"
-        ],
-        "format": "m-y",
-        "ext": ".zip"
-      }
-    },
-    {
-      "name": "xd3",
-      "host": "ftp.hardcoreFutanari.com",
-      "user": "user",
-      "pass": "pass",
-      "fileDir": "/logs",
-      "fileGeneration": {
-        "yearDigits": 2,
-        "monthList": [
-          "01",
-          "02",
-          "03",
-          "04",
-          "05",
-          "06",
-          "07",
-          "08",
-          "09",
-          "10",
-          "11",
-          "12"
-        ],
-        "format": "m-y",
-        "ext": ".pito"
       }
     }
   ],
@@ -91,34 +40,12 @@
       "host": "ftp.test.xd2",
       "user": "user",
       "pass": "pass",
+      "secure": false,
       "fileDir": "/logs",
       "fileGeneration": {
+        "dayMonthDigits": "2",
         "yearDigits": 2,
-        "format": "d-m-y",
-        "ext": ".gz"
-      }
-    },
-    {
-      "name": "xd2",
-      "host": "ftp.test.xd3",
-      "user": "user",
-      "pass": "pass",
-      "fileDir": "/logs",
-      "fileGeneration": {
-        "yearDigits": 4,
-        "format": "d-m-y",
-        "ext": ".gz"
-      }
-    },
-    {
-      "name": "xd5",
-      "host": "ftp.test.xd4",
-      "user": "user",
-      "pass": "pass",
-      "fileDir": "/logs",
-      "fileGeneration": {
-        "yearDigits": 4,
-        "format": "d-m-y",
+        "format": "access.log.${d}-${m}-${y}",
         "ext": ".gz"
       }
     }

@@ -22,10 +22,10 @@
   "dependencies": {
     "basic-ftp": "^4.6.6",
     "inquirer": "^8.0.0",
-    "inquirer-datepicker-prompt": "^0.4.2",
-    "nodemon": "^2.0.7"
+    "inquirer-datepicker-prompt": "^0.4.2"
   },
   "devDependencies": {
-    "eslint": "^7.25.0"
+    "eslint": "^7.25.0",
+    "nodemon": "^2.0.7"
   }
 }
