@@ -22,7 +22,8 @@
   "dependencies": {
     "basic-ftp": "^4.6.6",
     "inquirer": "^8.0.0",
-    "inquirer-datepicker-prompt": "^0.4.2"
+    "inquirer-datepicker-prompt": "^0.4.2",
+    "ssh2-sftp-client": "^6.0.1"
   },
   "devDependencies": {
     "eslint": "^7.25.0",

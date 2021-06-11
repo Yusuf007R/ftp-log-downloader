@@ -13,5 +13,5 @@ module.exports = (data, date) => {
   );
   let fileName = `${fileFormat}${fileGeneration.ext}`;
 
-  return { fileName, ...data };
+  return [fileName];
 };

@@ -22,7 +22,7 @@ module.exports = (data, datesArray) => {
         : datesArray[i].getFullYear()
     );
     let fileName = `${fileDate}${fileGeneration.ext}`;
-    fileNames.push({ fileName, ...data });
+    fileNames.push(fileName);
   }
   return fileNames;
 };

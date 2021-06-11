@@ -25,23 +25,27 @@ inquirer
           message: "Insert a date (dd-mm-yy)",
           format: ["dd", "/", "mm", "/", "yy"],
         })
-        .then(({ date }) => {
+        .then(async ({ date }) => {
           console.log("generating file names...");
           let listOfFIles = [];
           for (let i = 0; i < config.monthly.length; i++) {
-            listOfFIles.push(
-              monthlyFileGenerator(
+            listOfFIles.push({
+              data: monthlyFileGenerator(
                 {
                   saveDir: config.configs.monthlySavePath,
                   ...config.monthly[i],
                 },
                 date
-              )
+              ),
+              serverInfo: config.monthly[i],
+            });
+          }
+          for (let i = 0; i < listOfFIles.length; i++) {
+            await ConnectAndDownload(
+              listOfFIles[i].serverInfo,
+              listOfFIles[i].data
             );
           }
-          listOfFIles.forEach((element) => {
-            ConnectAndDownload(element);
-          });
         });
     } else if (typeOfLog == "Daily") {
       inquirer
@@ -61,24 +65,26 @@ inquirer
                 message: "Insert a date (dd-mm-yy)",
                 format: ["dd", "/", "mm", "/", "yy"],
               })
-              .then(({ date }) => {
+              .then(async ({ date }) => {
                 let listOfFIles = [];
                 for (let i = 0; i < config.daily.length; i++) {
-                  listOfFIles.push(
-                    dailyFileGenerator(
+                  listOfFIles.push({
+                    data: dailyFileGenerator(
                       {
                         saveDir: config.configs.DailySavePath,
                         ...config.daily[i],
                       },
                       [date]
-                    )
+                    ),
+                    serverInfo: config.daily[i],
+                  });
+                }
+                for (let i = 0; i < listOfFIles.length; i++) {
+                  await ConnectAndDownload(
+                    listOfFIles[i].serverInfo,
+                    listOfFIles[i].data
                   );
                 }
-                listOfFIles.forEach((element) => {
-                  element.forEach((element) => {
-                    ConnectAndDownload(element);
-                  });
-                });
               });
           } else if (TypeOfDaily == "Group of days") {
             inquirer
@@ -96,25 +102,27 @@ inquirer
                     message: "Insert a Second date (dd-mm-yy)",
                     format: ["dd", "/", "mm", "/", "yy"],
                   })
-                  .then(({ SecondDate }) => {
+                  .then(async ({ SecondDate }) => {
                     const arrayOfDates = getDates(firstDate, SecondDate);
                     let listOfFIles = [];
                     for (let i = 0; i < config.daily.length; i++) {
-                      listOfFIles.push(
-                        dailyFileGenerator(
+                      listOfFIles.push({
+                        data: dailyFileGenerator(
                           {
                             saveDir: config.configs.DailySavePath,
                             ...config.daily[i],
                           },
                           arrayOfDates
-                        )
+                        ),
+                        serverInfo: config.daily[i],
+                      });
+                    }
+                    for (let i = 0; i < listOfFIles.length; i++) {
+                      await ConnectAndDownload(
+                        listOfFIles[i].serverInfo,
+                        listOfFIles[i].data
                       );
                     }
-                    listOfFIles.forEach((element) => {
-                      element.forEach((element) => {
-                        ConnectAndDownload(element);
-                      });
-                    });
                   });
               });
           }
