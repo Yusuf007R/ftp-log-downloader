@@ -10,8 +10,8 @@
       "host": "ftp.test.xd",
       "user": "user",
       "pass": "pass",
-      "secure": false,
-      "fileDir": "/logs/",
+      "protocol": false,
+      "absolutePath": "/logs/",
       "fileGeneration": {
         "yearDigits": 2,
         "monthList": [
@@ -36,16 +36,18 @@
 
   "daily": [
     {
-      "name": "xd2",
-      "host": "ftp.test.xd2",
-      "user": "user",
-      "pass": "pass",
+      "name": "test",
+      "host": "test",
+      "user": "test",
+      "pass": "test",
+      "port": "test",
+      "protocol": "test",
       "secure": false,
-      "fileDir": "/logs",
+      "absolutePath": "test",
       "fileGeneration": {
         "dayMonthDigits": "2",
-        "yearDigits": 2,
-        "format": "access.log.${d}-${m}-${y}",
+        "yearDigits": 4,
+        "format": "access.log.${y}-${m}-${d}",
         "ext": ".gz"
       }
     }
